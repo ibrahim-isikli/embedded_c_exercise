@@ -12,7 +12,7 @@ int main(void)
     scanf("%d",&arraySize);
 
     // allocate dynamic memory
-    int *nums =(uint8_t*)malloc(arraySize*sizeof(uint8_t));
+    int *nums =(int*)malloc(arraySize*sizeof(int));
     if(nums == NULL)
     {
         printf("memory allocation failed !\n");
