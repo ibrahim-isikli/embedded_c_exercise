@@ -17,6 +17,7 @@ int main(void)
     printf("addres of pp:          %d\n",(void*)&pp);
     printf("\n\n");
     printf("&a == p == *pp\n");
+    printf("%d == %d == %d\n",&a,p,*pp);
 
     
     return 0;
