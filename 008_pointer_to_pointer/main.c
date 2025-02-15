@@ -18,4 +18,6 @@ int main(void)
     changePointer(pp);
     printf("address of num = %d\tvalue of num= %d\n",&num,num);
 
+    return 0;
+
 }

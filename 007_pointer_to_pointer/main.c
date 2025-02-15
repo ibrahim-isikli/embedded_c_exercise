@@ -24,4 +24,5 @@ int main(void)
     printf("value of p = %d\n",*p);
     printf("p = %d\n",p);
     
+    return 0;
 }
