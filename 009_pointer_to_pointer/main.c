@@ -18,4 +18,5 @@ int main(void)
     int *p = NULL;
     allocateMemory(&p);
     printf("value stored in dynamic memory: %d\n",*p);
+    free(p);
 }
