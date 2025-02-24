@@ -13,7 +13,7 @@ int main(void)
 
     for(int8_t i=0; i<size; i++)
     {
-        printf("[%d]:\t");
+        printf("[%d]:\t",i);
         scanf("%d",arr+i);
     }
 
