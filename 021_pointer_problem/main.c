@@ -1,81 +1,56 @@
-/* Problem: Two-Dimensional Dynamic Array Operation
-
-Scenario: In a classroom, each student has a different number of exams. We will write a program to store and analyze students' exam scores using dynamic memory allocation.
-
-Requirements:
-
-Get the number of students from the user.
-
-Ask for the number of exam scores for each student.
-
-Enter each student's exam scores.
-
-Calculate and print the average score for each student.
-
-Properly free the allocated memory. */
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
 
+int main() {
+    int num_students; 
 
-int main(void)
-{
-    int numberOfStudents,numberOfExams;
-    printf("enter the number of students:\t");
-    scanf("%d",&numberOfStudents);
+    printf("ogrenci sayisini girin: ");
+    scanf("%d", &num_students);
 
-    int **students = (int**)malloc(sizeof(int*)*numberOfStudents);
+    // ogrencilerin notlarini tutacak dinamik bellek tahsisi
+    int **grades = (int**)malloc(num_students * sizeof(int*));
+    int *exam_count = (int*)malloc(num_students * sizeof(int)); // Her ogrencinin kac sinavi var
 
-    if(students == NULL)
-    {
-        printf("memory allocation failed !\n");
-        return -1;
+    if (grades == NULL || exam_count == NULL) {
+        printf("Bellek tahsisi basarisiz!\n");
+        return 1;
     }
 
-    for(int i=0; i<numberOfStudents; i++)
-    {
-        printf("enter the number of exam scores for each student\n\n");
+    // Her ogrenci icin sinav sayisini ve notlarini al
+    for (int i = 0; i < num_students; i++) {
+        printf("ogrenci %d kac sinava girdi? ", i + 1);
+        scanf("%d", &exam_count[i]);
 
-        printf("enter the number of exams:\t");
-        scanf("%d",&numberOfExams);
+        grades[i] = (int*)malloc(exam_count[i] * sizeof(int)); // Sinav sayisi kadar bellek tahsis et
 
-        students[i] = (int*)malloc(sizeof(int)*numberOfExams);
-
-        if(students[i] == NULL)
-        {
-            printf("memory allocation failed for student %d!\n",i);
-            return -1;
+        if (grades[i] == NULL) {
+            printf("Bellek tahsisi basarisiz!\n");
+            return 1;
         }
 
-        for(int j=0; j<numberOfExams; j++)
-        {
-            
-            printf("STUDENT [%d] - NOTE [%d] =>\t",i+1,j+1);
-            scanf("%d",&students[i][j]);
+        printf("ogrenci %d icin sinav notlarini girin:\n", i + 1);
+        for (int j = 0; j < exam_count[i]; j++) {
+            printf("Not %d: ", j + 1);
+            scanf("%d", &grades[i][j]);
         }
-
     }
 
-
-    // print
-    for(int i =0; i<numberOfStudents; i++)
-    {
-        printf("--- exam scores for student %d ---\n",i);
-        for(int j=0; j<numberOfExams; j++)
-        {
-            printf("%d\t",students[i][j]);
+    // Ortalama hesaplama ve ekrana yazdirma
+    printf("\nogrencilerin not ortalamalari:\n");
+    for (int i = 0; i < num_students; i++) {
+        int sum = 0;
+        for (int j = 0; j < exam_count[i]; j++) {
+            sum += grades[i][j];
         }
-        printf("\n");
+        printf("ogrenci %d: %.2f\n", i + 1, (double)sum / exam_count[i]);
     }
 
-    // free
-    for(int i=0; i<numberOfStudents; i++)
-    {
-        free(students[i]);
+    // Bellegi temizleme
+    for (int i = 0; i < num_students; i++) {
+        free(grades[i]); // Her ogrencinin notlarini iceren diziyi temizle
     }
-
-    free(students);
+    free(grades);
+    free(exam_count);
 
     return 0;
 }
