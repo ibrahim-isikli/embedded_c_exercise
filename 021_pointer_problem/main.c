@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+/* Problem: Two-Dimensional Dynamic Array Operation
 
+Scenario: In a classroom, each student has a different number of exams. We will write a program to store and analyze students' exam scores using dynamic memory allocation.
+
+Requirements:
+
+Get the number of students from the user.
+
+Ask for the number of exam scores for each student.
+
+Enter each student's exam scores.
+
+Calculate and print the average score for each student.
+
+Properly free the allocated memory. */
 
 /*
     THE STRUCTURE
