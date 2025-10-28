@@ -21,6 +21,16 @@ uint8_t max2(uint8_t a, uint8_t b)
     return (a>b) ? a : b;
 }
 
+uint8_t sub(uint8_t a, uint8_t b)
+{
+    return(a-b);
+}
+
+uint8_t min2(uint8_t a, uint8_t b)
+{
+    return (a<b) ? a:b;
+}
+
 // add , mul, max2 -> strategy thus compute is context for implement each of this strategiies
 
 // high order func
@@ -39,12 +49,14 @@ int main(void)
     printf("add(3,4) = %d\n",compute(add,3,4));
     printf("mul(3,4) = %d\n",compute(mul,3,4));
     printf("max(3,4) = %d\n",compute(max2,3,4));
+    printf("sub(7,4) = %d\n",compute(sub,7,4));
+    printf("min(7,6) = %d\n",compute(min2,7,6));
 
     printf("\n--call into table\n\n");
-    op_t table[] = {add,mul,max2};
-    const char *names[] = {"add","mul","max"};
+    op_t table[] = {add,mul,max2,sub,min2};
+    const char *names[] = {"add","mul","max","sub","min"};
 
-    for(uint8_t funcs=0; funcs<3; ++funcs)
+    for(uint8_t funcs=0; funcs<5; ++funcs)
     {
         uint8_t result = table[funcs](10,5);
         printf("%s(10,5) = %d\n",names[funcs],result);
