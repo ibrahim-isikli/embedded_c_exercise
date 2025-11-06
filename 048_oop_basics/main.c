@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-
+#include <string.h>
 // base interface 
 typedef struct Shape Shape;
 
@@ -65,7 +65,7 @@ double circle_get_perimeter(Shape *s)
 void circle_print(Shape *s)
 {
     Circle *c = (Circle*)s;
-    printf("[Circle %s] r = %.2f area = %.2f peri=%.2f\n ",c->base.name,c->radius,,circle_get_area(s),circle_get_perimeter(s));
+    printf("[Circle %s] r = %.2f area = %.2f peri=%.2f\n ",c->base.name,c->radius,circle_get_area(s),circle_get_perimeter(s));
 }
 
 // circle vtable (one of copy)
@@ -94,13 +94,52 @@ typedef struct
 
 
 
+double square_get_area(Shape *s)
+{
+    Square *sq = (Square*)s;
+    return sq->side * sq->side;
+}
+
+double square_get_perimeter(Shape *s)
+{
+    Square *sq = (Square*)s;
+    return sq->side * 4;
+}
+
+void square_print(Shape *s)
+{
+    Square *sq = (Square*)s;
+    printf("[Square '%s'] side = %.2f area = %.2f perimeter = %.2f\n",sq->base.name,sq->side,square_get_area(s),square_get_perimeter(s));
+}
+
+// square vector table
+const ShapeVTable square_vtable =
+{
+    .get_area = square_get_area,
+    .get_perimeter = square_get_perimeter,
+    .print = square_print
+};
 
 
-
-
+// square maker
+void square_init(Square *sq, const char *name, double side)
+{
+    sq->base.vptr = &square_vtable;
+    sq->base.name = name;
+    sq->side = side;
+}
 
 int main(void)
 {
+    Circle c1;
+    Square s1;
+
+    circle_init(&c1,"circle",5.0);
+    square_init(&s1,"square",3.0);
+    // polimorfic using -> same interface different behavior
+    Shape *shapes [] = {(Shape*)&c1, (Shape*)&s1};
+    for(uint8_t i=0; i<2; ++i)
+        shape_print(shapes[i]);
 
     return 0;
 }
