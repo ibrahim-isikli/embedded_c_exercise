@@ -159,18 +159,37 @@ void triangle_print(Shape *t)
     printf("[Square '%s'] height = %.2f area = %.2f perimeter = %.2f\n",tg->base.name,tg->height,triangle_get_area(t),triangle_get_perimeter(t));
 }
 
+// triangle vector table 
 
+const ShapeVTable triangle_vtable = 
+{
+    .get_area      = triangle_get_area,
+    .get_perimeter = triangle_get_perimeter,
+    .print         = triangle_print
+};
+
+// triangle maker
+void triangle_init(Triangle *tg, const char *name, double side, double height)
+{
+    tg->base.vptr    = &triangle_vtable;
+    tg->base.name    = name;
+    tg->height       = height;
+    tg->side         = side; 
+
+}
 
 int main(void)
 {
     Circle c1;
     Square s1;
+    Triangle t1;
 
     circle_init(&c1,"circle",5.0);
     square_init(&s1,"square",3.0);
+    triangle_init(&t1,"triangle",3.0,5.0);
     // polimorfic using -> same interface different behavior
-    Shape *shapes [] = {(Shape*)&c1, (Shape*)&s1};
-    for(uint8_t i=0; i<2; ++i)
+    Shape *shapes [] = {(Shape*)&c1, (Shape*)&s1, (Shape*)&t1};
+    for(uint8_t i=0; i<3; ++i)
         shape_print(shapes[i]);
 
     return 0;
