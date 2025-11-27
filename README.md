@@ -14,4 +14,4 @@ Each folder represents an independent mini-project or concept demonstration.
 | `020_struct_enum`      | Structs, enums, typedef usage |
 | `030_callbacks`        | Function pointers & callback mechanics |
 | `040_state_machine`    | Simple state machine implementations |
-| `050_drivers`          | Modular API, init/open/close patterns_
+| `050_drivers`          | Modular API, init/open/close patterns |
