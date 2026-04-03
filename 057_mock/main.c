@@ -5,7 +5,7 @@ extern int mock_button_state;
 
 int main() 
 {
-    printf("---------- MOCK BASIC ---------\n\n");
+    printf("\n\n\n---------- MOCK BASIC ---------\n\n");
 
     printf("->mock test 1\n\n");
     mock_button_state = 0;

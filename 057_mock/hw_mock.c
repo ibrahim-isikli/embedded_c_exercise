@@ -20,3 +20,9 @@ void hw_led_off(void)
 {
     printf("MOCK: led off\n\r\f");
 }
+
+
+void hw_uart_access(void)
+{
+    printf("uart access\n\r\f");
+}
