@@ -12,7 +12,7 @@ typedef enum
 #define EVENT_QUEUE_SIZE 10
 
 void test_event(void);
-void push_event(event_t e);
+int push_event(event_t e);
 event_t get_event(void);
 
 

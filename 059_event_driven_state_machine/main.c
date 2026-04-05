@@ -6,9 +6,6 @@
 int main(void)
 {
     test_event();
-    push_event(EVENT_PIR);
-    push_event(EVENT_BUTTON);
-    push_event(EVENT_TIMEOUT);
  
     while(1)
     {
@@ -28,10 +25,11 @@ int main(void)
             break;
 
             case EVENT_NONE:
+                // busy loop
             break;
 
             default:
-                printf("unknow event\n\r\f");
+                printf("unknown event\n\r\f");
             break;
         }
     }

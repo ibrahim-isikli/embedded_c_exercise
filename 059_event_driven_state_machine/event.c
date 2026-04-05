@@ -2,8 +2,8 @@
 #include "event.h"
 
 
-event_t event_queue[EVENT_QUEUE_SIZE];
-int head = 0, tail = 0;
+static event_t event_queue[EVENT_QUEUE_SIZE];
+static int head = 0, tail = 0;
 
 void test_event(void)
 {
@@ -13,14 +13,25 @@ void test_event(void)
     push_event(EVENT_PIR);
     push_event(EVENT_BUTTON);
     push_event(EVENT_TIMEOUT);
-    push_event(EVENT_NONE);
    
 }
 
-void push_event(event_t e)
+int push_event(event_t e)
 {
-    event_queue[tail] = e; // tail 4 = e
-    tail = (tail+1) % EVENT_QUEUE_SIZE; // tail 4+1=5   5%10 = 5, if lower value 5%4=1 
+    // new version (added checks)
+
+    int next_tail = (tail+1) % EVENT_QUEUE_SIZE;
+    
+    if(next_tail == head)
+        return -1; // queue full
+    
+    event_queue[tail] = e;
+    tail = next_tail;
+
+    return 0;
+    // old version (simply)
+    // event_queue[tail] = e; // tail 4 = e
+    // tail = (tail+1) % EVENT_QUEUE_SIZE; // tail 4+1=5   5%10 = 5, if lower value 5%4=1 
 }
 
 event_t get_event(void)
