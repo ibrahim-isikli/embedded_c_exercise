@@ -29,6 +29,7 @@ float IInput_readInputValue_Impl(void)
 #ifndef STM32f4
     printf("[IInput] Input value read : %.2f\n",currentInputValue); 
 #endif
+    return currentInputValue;
 }
 
 IInput_StatusType IInput_writeStatus_Impl(IInput_ResultStatus status)
