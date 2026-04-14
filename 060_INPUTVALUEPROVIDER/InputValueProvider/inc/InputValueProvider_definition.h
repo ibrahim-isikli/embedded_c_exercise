@@ -76,8 +76,9 @@ typedef struct InputValueProvider
     (void)                    (*SetOutput)(InputValueProvider_Output output);
 
     /* toString */
-
+    char* (*toString)(void);
     /* Functional Behaviour */
+    dtInputValueProvider_ivpReturn(*checkThreshold)(float value);
 
 }dt_InputValueProvider;
 
