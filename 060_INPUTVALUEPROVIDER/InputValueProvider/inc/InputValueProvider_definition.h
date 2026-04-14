@@ -29,6 +29,35 @@ typedef float                   dtInputValueProvider_outputValue;
 
 /* ChildClass Definition */
 
+typedef struct
+{
+    // attirubutte
+    dtInputValueProvider_inputStatus    status;
+    dtInputValueProvider_inputValue     value;
+    // getter / setter
+    dtInputValueProvider_inputStatus (*GetStatus)(void);
+    (void)                           (*SetStatus)(dtInputValueProvider_inputStatus status);
+    dtInputValueProvider_inputValue  (*GetValue)(void);
+    (void)                           (*SetValue)(dtInputValueProvider_inputValue value);
+}InputValueProvider_Input;
+
+
+typedef struct 
+{
+    // attirubute
+    dtInputValueProvider_outputStatus   status;
+    dtInputValueProvider_outputValue    value;
+    // getter / setter
+    dtInputValueProvider_outputStatus (*GetStatus)(void);
+    (void)                            (*SetStatus)(dtInputValueProvider_outputStatus status);
+    dtInputValueProvider_outputValue  (*GetValue)(void);
+    (void)                            (*SetValue)(dtInputValueProvider_outputValue value);
+}InputValueProvider_Output;
+
+
+
+
+
 /* BaseClass Definition*/
 typedef struct InputValueProvider
 {
@@ -37,8 +66,14 @@ typedef struct InputValueProvider
     IOutput* IOutput;
 
     /* Attribute */
-
+    InputValueProvider_Input input;
+    InputValueProvider_Output output;
+    
     /* Getter/Setter */
+    InputValueProvider_Input  (*GetInput)(void);
+    (void)                    (*SetInput)(InputValueProvider_Input input);
+    InputValueProvider_Output (*GetOutput)(void);
+    (void)                    (*SetOutput)(InputValueProvider_Output output);
 
     /* toString */
 
