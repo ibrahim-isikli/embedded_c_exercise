@@ -6,6 +6,10 @@
 /* Constructor Prototype */
 void InputValueProvider_CTOR(void);
 
+// if user want to multiple (changeable) components use that line
+// that is super class construct
+//void InputValueProvider_CTOR(dtInputValueProvider input_ctr);
+
 /* Singelton base class getter */
 dtInputValueProvider* InputValueProvider_GetInstance(void);
 
