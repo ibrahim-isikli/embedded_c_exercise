@@ -39,7 +39,7 @@ IOutput_StatusType IOutput_writeStatus_Impl(IOutput_ResultStatus status)
 {
     currentStatus = status;
 #ifndef STM32f4
-    printf("[IOutput] Output status written : %.2f\n",status); 
+    printf("[IOutput] Output status written : %d\n",status); 
 #endif
     return IOUTPUT_OK;
 }
@@ -47,7 +47,7 @@ IOutput_StatusType IOutput_writeStatus_Impl(IOutput_ResultStatus status)
 IOutput_ResultStatus IOutput_readStatus_Impl(void)
 {
 #ifndef STM32f4
-    printf("[IOutput] Output status : %.2f\n",currentStatus); 
+    printf("[IOutput] Output status : %d\n",currentStatus); 
 #endif
     return currentStatus;
 }

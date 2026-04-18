@@ -114,6 +114,8 @@ char* InputValueProvider_toString_Impl(void)
         getStringFromOutputStatus(self->GetOutput().GetStatus()),
         getStringFromIvpReturn(status));
     }
+
+    return str;
 }
 
 /* Constructor */
