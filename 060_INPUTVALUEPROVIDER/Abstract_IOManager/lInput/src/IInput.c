@@ -36,7 +36,7 @@ IInput_StatusType IInput_writeStatus_Impl(IInput_ResultStatus status)
 {
     currentStatus = status;
 #ifndef STM32f4
-    printf("[IInput] Input status written: %.2f\n",status); 
+    printf("[IInput] Input status written: %d\n",status); 
 #endif
     return IINPUT_OK;
 }
@@ -44,7 +44,7 @@ IInput_StatusType IInput_writeStatus_Impl(IInput_ResultStatus status)
 IInput_ResultStatus  IInput_readStatus_Impl(void)
 {
 #ifndef STM32f4
-    printf("[IInput] Input status : %.2f\n",currentStatus); 
+    printf("[IInput] Input status : %d\n",currentStatus); 
 #endif
     return currentStatus;
 }
