@@ -6,7 +6,7 @@ FUNC(void,dtInputValueProvider_ruInit)(void)
     dtInputValueProvider* ivp = InputValueProvider_GetInstance;
 
     /* read output status*/
-    ivp->GetOutput().SetValue( ivp->IOutput->readStatus() );
+    ivp->GetOutput().SetStatus( ivp->IOutput->readStatus() );
 
     if(IOUTPUT_STATUS_FALSE != ivp->GetOutput().GetStatus)
     {
