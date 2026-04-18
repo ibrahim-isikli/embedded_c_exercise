@@ -107,7 +107,7 @@ char* InputValueProvider_toString_Impl(void)
         return strdup("Memory allocation failed!\n");
     else
     {
-        printf("[InputValueProvider] Input: %2.f, InputStatus:%s,Output: %2.f, OutputStatus:%s, ThresholdStatus:%s\n",
+        sprintf(str, "[InputValueProvider] Input: %.2f, InputStatus:%s, Output: %.2f, OutputStatus:%s, ThresholdStatus:%s",
         self->GetInput().GetValue(),
         getStringFromInputStatus(self->GetInput().GetStatus()),
         self->GetOutput().GetValue(),
@@ -135,10 +135,10 @@ void InputValueProvider_Output_CTOR(void)
 {
     instance.output.status = IOUTPUT_STATUS_UNKNOW;
     instance.output.value  = 0.0f;
-    instance.output.GetStatus = InputValueProvider_GetInputStatus_Impl;
-    instance.output.SetStatus = InputValueProvider_SetInputStatus_Impl;
-    instance.output.GetValue  = InputValueProvider_GetInputValue_Impl;
-    instance.output.SetValue  = InputValueProvider_SetInputValue_Impl;
+    instance.output.GetStatus = InputValueProvider_GetOutputStatus_Impl;
+    instance.output.SetStatus = InputValueProvider_SetOutputStatus_Impl;
+    instance.output.GetValue  = InputValueProvider_GetOutputValue_Impl;
+    instance.output.SetValue  = InputValueProvider_SetOutputValue_Impl;
 }
 
 /* Base Class Constructor(CTOR) */

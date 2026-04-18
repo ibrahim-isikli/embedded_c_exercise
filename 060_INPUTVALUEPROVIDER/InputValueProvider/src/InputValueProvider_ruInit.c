@@ -3,12 +3,12 @@
 FUNC(void,dtInputValueProvider_ruInit)(void)
 {
     /* get singelton instance */
-    dtInputValueProvider* ivp = InputValueProvider_GetInstance;
+    dtInputValueProvider* ivp = InputValueProvider_GetInstance();
 
     /* read output status*/
     ivp->GetOutput().SetStatus( ivp->IOutput->readStatus() );
 
-    if(IOUTPUT_STATUS_FALSE != ivp->GetOutput().GetStatus)
+    if(IOUTPUT_STATUS_FALSE != ivp->GetOutput().GetStatus())
     {
         ivp->GetOutput().SetStatus(IOUTPUT_STATUS_FALSE);
     }
@@ -18,9 +18,4 @@ FUNC(void,dtInputValueProvider_ruInit)(void)
     }
 
     ivp->IOutput->writeStatus(ivp->GetOutput().GetStatus());
-}
-
-FUNC(void,dtInputValueProvider_ruRefresh)(void)
-{
-
 }

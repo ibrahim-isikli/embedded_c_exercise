@@ -14,10 +14,10 @@ typedef enum
 
 
 /* IInput : Compu Method Flag      */
-typedef uninon
+typedef union
 {
     float data;
-    struct 
+    struct
     {
         uint32_t raw_bits;
     }asBits;
@@ -43,10 +43,10 @@ typedef enum
 }IOutput_ResultStatus;
 
 /* IOutput : Compu Method Flag      */
-typedef uninon
+typedef union
 {
     float data;
-    struct 
+    struct
     {
         uint32_t raw_bits;
     }asBits;
