@@ -4,63 +4,63 @@
 static dtInputValueProvider instance;
 
 /* Getter-Setter Impl Base Class */
-InputValueProvider_Input    InputValueProvider_GetInput_Impl(void)
+InputValueProvider_Input InputValueProvider_GetInput_Impl(void)
 {
     return instance.input;
 }
 
-void                        InputValueProvider_SetInput_Impl(InputValueProvider_Input input)
+void InputValueProvider_SetInput_Impl(InputValueProvider_Input input)
 {
     instance.input = input;
 }
 
-InputValueProvider_Output   InputValueProvider_GetOutput_Impl(void)
+InputValueProvider_Output InputValueProvider_GetOutput_Impl(void)
 {
     return instance.output;
 }
 
-void                        InputValueProvider_SetOutput_Impl(InputValueProvider_Output output)
+void InputValueProvider_SetOutput_Impl(InputValueProvider_Output output)
 {
     instance.output = output; 
 }
 
 /* Getter-Setter Impl Child Class*/
-dtInputValueProvider_inputStatus    InputValueProvider_GetInputStatus_Impl(void)
+dtInputValueProvider_inputStatus InputValueProvider_GetInputStatus_Impl(void)
 {
     return instance.input.status;
 }
 
-void                                InputValueProvider_SetInputStatus_Impl(dtInputValueProvider_inputStatus status)
+void InputValueProvider_SetInputStatus_Impl(dtInputValueProvider_inputStatus status)
 {
     instance.input.status = status;
 }
 
-dtInputValueProvider_inputValue     InputValueProvider_GetInputValue_Impl(void)
+dtInputValueProvider_inputValue InputValueProvider_GetInputValue_Impl(void)
 {
     return instance.input.value;
 }
 
-void                                InputValueProvider_SetInputValue_Impl(dtInputValueProvider_inputValue value)
+void InputValueProvider_SetInputValue_Impl(dtInputValueProvider_inputValue value)
 {
     instance.input.value = value;
 }
 
-dtInputValueProvider_outputStatus   InputValueProvider_GetOutputStatus_Impl(void)
+dtInputValueProvider_outputStatus InputValueProvider_GetOutputStatus_Impl(void)
 {
     return instance.output.status;
 }
 
-void                                InputValueProvider_SetOutputStatus_Impl(dtInputValueProvider_outputStatus status)
+void InputValueProvider_SetOutputStatus_Impl(dtInputValueProvider_outputStatus status)
 {
     instance.output.status = status;
 }
 
-dtInputValueProvider_outputValue    InputValueProvider_GetOutputValue_Impl(void)
+dtInputValueProvider_outputValue InputValueProvider_GetOutputValue_Impl(void)
 {
     return instance.output.value;
 }
 
-void                                InputValueProvider_SetOutputValue_Impl(dtInputValueProvider_outputValue value)
+void InputValueProvider_SetOutputValue_Impl(dtInputValueProvider_outputValue value)
 {
     instance.output.value = value;
 }
@@ -170,11 +170,7 @@ dtInputValueProvider* InputValueProvider_GetInstance(void)
     return &instance;
 }
 
-
-
-
 ///////////////////////////////////////////////////
-
 
 /* Functional Behaviour Impl */
 dtInputValueProvider_ivpReturn InputValueProvider_checkThreshold_Impl(float value) 
