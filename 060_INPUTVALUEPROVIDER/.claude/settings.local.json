@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gcc main.c -o main)",
+      "Bash(./main)",
+      "Bash(gcc c:/Users/ibrahim/Github/embedded_c_exercise/061_oop_simple/main.c -o c:/Users/ibrahim/Github/embedded_c_exercise/061_oop_simple/main)"
+    ]
+  }
+}
